@@ -103,7 +103,8 @@ first character) and negative end position should result in an empty
 string.
 -}
 subString :: Int -> Int -> [a] -> [a]
-subString start end str = drop start (take (end + 1) str)
+subString start end str = take (max 0 (end + 1) - max 0 start) (drop start str)
+-- subString start end str = drop start (take (end + 1) str) --un-optimized version
 
 {- | Write a function that takes a String — space separated numbers,
 and finds a sum of the numbers inside this string.
